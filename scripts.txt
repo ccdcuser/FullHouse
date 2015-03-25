@@ -1,0 +1,7 @@
+for /f "delims=" %%a in (%1) do (net user %%a newpassword)
+
+dsquery user OU=Intake2011,OU=Students,DC=petenetlive,DC=com | dsmod user -pwd P@ssword123
+
+dsquery user "OU=Intake 2011,DC=petenetlive,DC=com" | dsmod user -pwd P@ssword123
+
+dsquery user {LDAP path to the OU} -limit 300 | dsmod user -pwd the-new-password -mustchpwd yes
