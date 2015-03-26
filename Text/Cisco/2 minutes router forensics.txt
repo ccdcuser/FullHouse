@@ -1,0 +1,26 @@
+show logging
+show version
+show users
+show route
+show arp
+show int ip brief 
+show int
+show ip socket
+show flash:
+dir flash:
+
+show conn all (shows all the connections to and through the box)
+show conn detail
+clear conn
+show ssh sessions ('ssh disconnect [SessionID#]' to disconnect the user)
+show shun
+show xlate
+
+show ip net trans ver
+show tcp brief all
+show run
+show start
+show ip cache flow
+show ip cef
+show clock detail
+show tech-support

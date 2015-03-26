@@ -1,0 +1,59 @@
+commands to run periodically to get an idea of the staus of the box:
+
+history -c #or rm -f ~/.bash_histroy
+who
+lastlog
+uptime
+top (press "q" to quit)
+ps
+sudo netstat -tupn #see current connections
+watch sudo iptables -L -n -v #watch the packet counters increase on your rules Ctrl+C to quit
+
+Check your md5 hashes against what you took earlier.
+
+
+
+user@Ubuntu:~$ who
+username  tty7         2015-03-04 23:40
+username  pts/1        2015-03-21 01:28 (iphone)
+
+
+user@Ubuntu:~$ lastlog
+Username         Port     From             Latest
+root                                       **Never logged in**
+daemon                                     **Never logged in**
+bin                                        **Never logged in**
+sys                                        **Never logged in**
+sync                                       **Never logged in**
+games                                      **Never logged in**
+whoopsie                                   **Never logged in**
+avahi-autoipd                              **Never logged in**
+avahi                                      **Never logged in**
+usbmux                                     **Never logged in**
+kernoops                                   **Never logged in**
+pulse                                      **Never logged in**
+rtkit                                      **Never logged in**
+speech-dispatcher                          **Never logged in**
+hplip                                      **Never logged in**
+saned                                      **Never logged in**
+user          pts/1    iphone           Sat Mar 21 01:28:40 -0400 2015
+plex                                       **Never logged in**
+haldaemon                                  **Never logged in**
+mysql                                      **Never logged in**
+sshd                                       **Never logged in**
+
+user@Ubuntu:~$
+user@Ubuntu:~$
+user@Ubuntu:~$
+user@Ubuntu:~$
+user@Ubuntu:~$
+user@Ubuntu:~$ uptime
+ 02:04:27 up 16 days,  1:24,  2 users,  load average: 0.83, 0.27, 0.29
+user@Ubuntu:~$
+user@Ubuntu:~$
+
+
+
+Check the ~/.ssh/authorized_keys for each user. If you find it delete it.
+
+

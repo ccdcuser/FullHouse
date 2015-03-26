@@ -1,0 +1,77 @@
+! Create a capture called 'MYCAP' and match anything using the source address 10.1.0.25 and destination port 80
+
+capture MYCAP match tcp host 10.1.0.25 any eq 80
+
+
+! Apply the MYCAP to an interface (vlan name)
+
+capture MYCAP interface inside
+
+
+! show all captures incase your are capturing more than one.
+
+show capture
+
+
+! show details specific to MYCAP
+
+show capture MYCAP
+
+
+! copy the capture as a *.pcap to a TFTP server.
+
+copy /pcap capture:MYCAP tftp:
+
+
+
+
+
+
+
+
+
+
+
+
+
+For Reference:
+
+Use the "capture" command on the PIX, see here (http://www.cisco.com/univercd/cc/td/doc/product/multisec/asa_sw/v_70/cref_txt/c.htm#wp1950270) for details. You cna capture traffic coming in one interface (pre-NAT) and capture it again as it goes out the egress interface (post-NAT), tne save it off the PIX in pcap format so you cna look at it with Ethereal.
+
+As an example:
+
+Problem:
+
+User on the Inside with an IP of 192.168.1.8 is having a problem accessing Cisco.com (198.133.219.25). The user is getting NATed to 1.1.1.8
+
+Step 1: Create ACL for both Inside and Outside Interface
+
+access-list 100 permit tcp host 1.1.1.8 host 198.133.219.25 eq 80
+
+access-list 100 permit tcp host 198.133.219.25 eq 80 host 1.1.1.8
+
+access-list 101 permit tcp host 192.168.1.8 host 198.133.219.25 eq 80
+
+access-list 101 permit tcp host 198.133.219.25 eq 80 host 192.168.1.8
+
+Step 2: Create captures on both Inside and Outside Interface
+
+capture out-web access-list 100 buffer 700000 interface outside packet-length 1518
+
+capture in-web access-list 101 buffer 700000 interface inside packet-length 1518
+
+Step 3: Have Inside user access www.cisco.com
+
+Step 4: Copy the captures off to a TFTP server
+
+copy capture:out-web tftp://10.1.1.10 pcap
+
+copy capture:in-web tftp://10.1.1.10 pcap
+
+OR copy using https:
+
+http server enable
+
+http 0.0.0.0 0.0.0.0 outside
+
+https:///capture/out-web/pcap

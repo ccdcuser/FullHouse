@@ -1,0 +1,29 @@
+WINDOWS - POISON IVY
+====================
+
+The following system changes may indicate the presence of Backdoor:Win32/Poisonivy:
+Presence of the following file:
+c:\windows:svvchost.exe
+Presence of the following registry modification:
+Adds value: "StubPath"
+With data: "c:\windows:svvchost.exe"
+To subkey: HKLM\Software\Microsoft\Active Setup\Installed Components\<CLSID>
+
+Some people say that the Start up Entry Exists 
+
+1. Kill explorer.exe
+2. Kill all running instances of your browser (just to be sure).
+3. Remove the runkey (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components), look for a key with only a stubpath item.
+4. Remove the exe the runkey is pointing to.
+
+
+Stop and remove PoisonIvy processes:
+wab32.exe Read more how to kill PoisonIvy processes
+
+Locate and delete PoisonIvy registry entries:
+HKLM\Software\Microsoft\Active Setup\Installed Components\{254F4E25-A65F-2764-0003-070806050704} "StubPath" = "%Windir%\wab32.exe"
+
+
+Detect and delete other PoisonIvy files:
+ocxerp.ex_
+%Windir%\wab32.exe

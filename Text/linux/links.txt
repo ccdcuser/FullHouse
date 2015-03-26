@@ -1,0 +1,38 @@
+
+Unhide - Unhide tcp and udp ports for windows.
+http://sourceforge.net/projects/unhide/files/WinUnhide.zip/download 
+
+Windows Server 2003 SP2 (32bit):
+https://www.microsoft.com/en-us/download/confirmation.aspx?id=41
+
+Windows Server 2003 SP2 (64bit):
+https://www.microsoft.com/en-us/download/confirmation.aspx?id=10018
+
+Windows XP SP 3 32bit
+http://www.microsoft.com/en-us/download/details.aspx?id=24
+
+Windows Server2008 SP2 
+http://support.microsoft.com/en-us/kb/968849
+
+Anti-Rootkit: Malware Bytes
+http://downloads.malwarebytes.org/file/mbar/
+
+Anti-Virus and other Utilities: KASPERSKY
+http://americas.kasperskylabs.com/HS?a=ENX7C64OXR3b8SA9MOApPJTnGHxKW_VNJvcStGb5lw8W0bBhOG5mpqVsje_HheH7H1Me
+
+
+
+
+
+LINUX
+=====
+
+Zeppoo - Detect hidden tasks, connections and system calls.
+http://sourceforge.net/projects/zeppoo/files/latest/download
+
+RKHunter - Rootkit hunter
+http://sourceforge.net/projects/rkhunter/files/latest/download?source=files
+
+chkrootkit - Check Root Kit
+ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz
+

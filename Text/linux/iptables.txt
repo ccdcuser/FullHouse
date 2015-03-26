@@ -1,0 +1,60 @@
+Check iptables:
+iptables -L -n -v
+
+If necessary flush iptables:
+iptables -F
+
+Zeroize iptables to reset the counters:
+iptables -Z
+
+Add these rules:
+iptables -P INPUT DROP
+iptables -I INPUT -j LOG --log-prefix "INCOMING: "
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8/0 -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp --dport #### -j ACCEPT
+iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset
+
+iptables -P OUTPUT DROP
+iptables -I OUTPUT -j LOG --log-prefix "OUTGOING: "
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type 0/0 -j ACCEPT
+iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+
+*** After you enter the initial rules, save them in 2 places:
+
+iptables-save > filename.fw
+
+#RHEL/CENTOS/Fedora
+sudo /etc/init.d/iptables save
+
+--good places to save them are:
+
+/tmp/rules.fw
+/etc/rules/rules.fw
+
+
+*** to restore iptables rules:
+
+iptables-restore < filename.fw
+
+*** The above only allows incoming connections we specify.
+
+*** Initial OUTGOING is denied, this means you cannot connect from our box to anything else, you will not be able to ping anything.
+
+*** to allow outgoing connections add the rule: (you will also need to allow return incoming traffic)
+
+iptables -A OUTPUT -j ACCEPT
+iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+*** after your connection is complete delete the above lines by:
+
+iptables -D OUTPUT -j ACCEPT
+iptables -D INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+

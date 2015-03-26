@@ -1,0 +1,110 @@
+shundisable telnet:
+
+no telnet 
+
+disable http and https:
+
+no http server enable
+
+no http 192.168.1.0 255.255.255.0 inside
+
+no logging asdm informational
+
+
+
+
+
+basic admin stuff:
+
+! Set a good enable password (max length 32)
+enable password 
+
+! set a good privilege password (max length 32)
+passwd
+
+
+! Allow SSH only from the 192.168.1.0/24 subnet on the inside insterface
+ssh 192.168.1.0 255.255.255.0 inside
+
+! Set a legal banner
+banner exec # This is a private system. Unauthorized access is prohibited. #
+banner motd
+banner login 
+
+
+! Create a username and password for ssh otherwise it is defaulted to 
+! Login: asa
+!  Pass: [what was set for the 'passwd' command above
+
+username scorebot password Chiapet1 privilege 0
+
+! Tell SSH to use the LOCAL database with the new username we created instead
+! of the defaults from above.
+aaa authentication ssh console LOCAL
+
+! ? Restricts commands from being run ?
+aaa authorization command LOCAL
+
+! Turn Logging on
+logging enable
+
+! Enable time-stamping syslog messages
+loggin timestamp
+
+! Set the level of severity you want to log to the console:
+!  alerts         Immediate action needed           (severity=1)
+!  critical       Critical conditions               (severity=2)
+!  debugging      Debugging messages                (severity=7)
+!  emergencies    System is unusable                (severity=0)
+!  errors         Error conditions                  (severity=3)
+!  informational  Informational messages            (severity=6)
+!  notifications  Normal but significant conditions (severity=5)
+!  warnings       Warning conditions                (severity=4)
+
+logging console 0
+
+! Set the level of logging for the buffered (stored in RAM)
+loggin buffered 0
+
+! Change the severity level for Login Permitted & Login Denied
+logging message 605005 level 0
+logging message 605004 level 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Helpful commands:
+
+! To stop an IP address use SHUN instead of bulding an access-list
+
+shun 192.168.1.1
+
+! Verify shun
+
+show shun
+
+! To remove shun
+
+clear shun

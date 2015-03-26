@@ -1,0 +1,28 @@
+How to Un-brick the ASA 5505 (Password Reset)
+
+1) Plug in console cable
+2) Power cycle device
+3) during boot a message should come up asking to press BREAK or ESC to interupt boot.
+	-Press ESC or 
+	-in putty press the 2 computers icon in the top left corner-->Special command-->Break
+
+4)This will dump you into ROMMON type 'confreg' it should give you 0x00000001. this is the 	default and we will need to set it back later.
+
+5)type 'confreg 0x41' press enter, this tells the ASA to ignore its startup-config
+
+6) type 'boot' and press enter.
+
+7) once the ASA has rebooted, enter prvileged exec by "enable" and press enter, when asked for a password there IS NOT ONE JUST PRESS ENTER then do:
+	 'copy startup-config running-config'
+8) Reset the passwords:
+enable secret *&DJS(@DKFIODSH@
+passwd HIODSHAFO#(JFDHIO#
+
+9) in config mode change the Configuration register back to 0x01
+config-register 0x01
+
+10) get back to privilege exec by 'exit' from config mode do a 'show verison' at the bottom
+	should say: Configuration register is 0x41 (will be 0x1 at next reload)
+11)do a 'copy running-config startup-config'
+12)Do a 'reaload' if asked: "System config has been modified. Save? [Y]es/[N]o" say 'yes' and after it reloads use your new passwords.
+

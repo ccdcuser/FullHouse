@@ -1,0 +1,22 @@
+VSFTPD
+
+Make the following changes to VSFTPD config files
+ sudo nano /etc/vsftpd.conf
+ anonymous_enable=no
+ local_enable=YES
+ write_enable=no
+ local_umask=022
+ connect_from_port_20=YES
+ chroot_list_enable=YES
+ chroot_list_file=/etc/vsftpd/chroot_list
+ userlist_enable=YES
+ userlist_file=/etc/vsftpd/userlist
+ userlist_deny=no
+
+To enable users to access the system they must be listed in "user_list". To lock them in their directory,
+they must be in "chroot_list". 
+
+
+
+
+###### the full vsftpd.conf options are with Anthony's binder.

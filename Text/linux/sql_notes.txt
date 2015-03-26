@@ -1,0 +1,192 @@
+# find your my.cnf file (normally its in: /etc/mysql/)
+
+find / -name my.cnf
+
+
+# find the 'datadir' from the my.cnf file (this is where your databases are)
+
+cat /etc/mysql/my.cnf
+
+
+# another way is to check ps -ef and grep from sql you might see what database was invoked
+
+
+
+
+
+
+Navigating MySQL:
+
+
+
+mysql -u USERNAME -p
+
+
+
+
+# see what databases you have:
+
+show databases;
+
+# this will always look like: (may have more items in it depending on your database 
+# but shoudl always have 'information_schema', 'mysql' & 'performance_schema'
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.03 sec)
+
+
+
+
+
+
+# if it looks like(below) the user you signed it as doesn't have persmissions to
+# see all the databases
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
++--------------------+
+2 rows in set (0.02 sec)
+
+
+
+# Enter a database: syntax: 'use [database]'
+
+mysql> use mysql;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------------+
+| Tables_in_mysql           |
++---------------------------+
+| columns_priv              |
+| db                        |
+| event                     |
+| func                      |
+| general_log               |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| host                      |
+| ndb_binlog_index          |
+| plugin                    |
+| proc                      |
+| procs_priv                |
+| proxies_priv              |
+| servers                   |
+| slow_log                  |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| user                      |
++---------------------------+
+24 rows in set (0.00 sec)
+
+
+mysql> show columns FROM user;
++------------------------+-----------------------------------+------+-----+
+| Field                  | Type                              | Null | Key |
++------------------------+-----------------------------------+------+-----+
+| Host                   | char(60)                          | NO   | PRI |
+| User                   | char(16)                          | NO   | PRI |
+| Password               | char(41)                          | NO   |     |
+| Select_priv            | enum('N','Y')                     | NO   |     |
+| Insert_priv            | enum('N','Y')                     | NO   |     |
+| Update_priv            | enum('N','Y')                     | NO   |     |
+| Delete_priv            | enum('N','Y')                     | NO   |     |
+| Create_priv            | enum('N','Y')                     | NO   |     |
+| Drop_priv              | enum('N','Y')                     | NO   |     |
+| Reload_priv            | enum('N','Y')                     | NO   |     |
+| Shutdown_priv          | enum('N','Y')                     | NO   |     |
+| Process_priv           | enum('N','Y')                     | NO   |     |
+| File_priv              | enum('N','Y')                     | NO   |     |
+| Grant_priv             | enum('N','Y')                     | NO   |     |
+| References_priv        | enum('N','Y')                     | NO   |     |
+| Index_priv             | enum('N','Y')                     | NO   |     |
+| Alter_priv             | enum('N','Y')                     | NO   |     |
+| Show_db_priv           | enum('N','Y')                     | NO   |     |
+| Super_priv             | enum('N','Y')                     | NO   |     |
+| Create_tmp_table_priv  | enum('N','Y')                     | NO   |     |
+| Lock_tables_priv       | enum('N','Y')                     | NO   |     |
+| Execute_priv           | enum('N','Y')                     | NO   |     |
+| Repl_slave_priv        | enum('N','Y')                     | NO   |     |
+| Repl_client_priv       | enum('N','Y')                     | NO   |     |
+| Create_view_priv       | enum('N','Y')                     | NO   |     |
+| Show_view_priv         | enum('N','Y')                     | NO   |     |
+| Create_routine_priv    | enum('N','Y')                     | NO   |     |
+| Alter_routine_priv     | enum('N','Y')                     | NO   |     |
+| Create_user_priv       | enum('N','Y')                     | NO   |     |
+| Event_priv             | enum('N','Y')                     | NO   |     |
+| Trigger_priv           | enum('N','Y')                     | NO   |     |
+| Create_tablespace_priv | enum('N','Y')                     | NO   |     |
+| ssl_type               | enum('','ANY','X509','SPECIFIED') | NO   |     |
+| ssl_cipher             | blob                              | NO   |     |
+| x509_issuer            | blob                              | NO   |     |
+| x509_subject           | blob                              | NO   |     |
+| max_questions          | int(11) unsigned                  | NO   |     |
+| max_updates            | int(11) unsigned                  | NO   |     |
+| max_connections        | int(11) unsigned                  | NO   |     |
+| max_user_connections   | int(11) unsigned                  | NO   |     |
+| plugin                 | char(64)                          | YES  |     |
+| authentication_string  | text                              | YES  |     |
++------------------------+-----------------------------------+------+-----+
+42 rows in set (0.00 sec)
+
+mysql> SELECT User,Password,Host FROM user;
++------------------+-------------------------------------------+-----------+
+| User             | Password                                  | Host      |
++------------------+-------------------------------------------+-----------+
+| root             | *0E2F6C8281D5170C255BAFFD2D283A722EC12A58 | localhost |
+| root             | *0E2F6C8281D5170C255BAFFD2D283A722EC12A58 | server2   |
+| root             | *0E2F6C8281D5170C255BAFFD2D283A722EC12A58 | 127.0.0.1 |
+| root             | *0E2F6C8281D5170C255BAFFD2D283A722EC12A58 | ::1       |
+| debian-sys-maint | *641434B825442F485AAB25878488D3F4D14C45F9 | localhost |
+| presql           | *08C9B0C2012D4E927C2E97595108809CF1D9F874 | localhost |
++------------------+-------------------------------------------+-----------+
+6 rows in set (0.01 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+Quick Reference:
+
+mysql -u root -p
+SELECT version();
+show databases;
+use [databasename];
+show tables;
+show columns FROM [tablename];
+# I have found "describe [tablename];" does the same as above
+
+# Too much output? Limit the output to the first 10 lines.
+
+SELECT * FROM [tablename] LIMIT 10;
+
+# Need more than the first 10 lines, syntax: SELECT * FROM [tablename] LIMIT [## starting line], [## howmany lines to show];
+
+SELECT * FROM [tablename] LIMIT 11, 10;
+
+

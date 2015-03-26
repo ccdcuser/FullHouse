@@ -1,0 +1,69 @@
+#Check for users:	|  #Change users passwords:	|  #Lock unnecessary accounts:
+			|  				|  
+cat /etc/passwd		|  passwd [username]		|  passwd -l [username]
+cat /etc/shadow		|  				|  
+
+
+#MD5SUMs:
+sudo md5sum /etc/passwd /etc/shadow /etc/group /etc/sudoers >> etc_md5
+sudo md5sum /bin/* >> bin_md5
+
+#make /etc/passwd, /etc/shadow, immutable: *** as root ****
+root> chattr +i /etc/passwd
+root> chattr +i /etc/shadow
+root> chattr +i /etc/sudoers
+root> chattr +i /etc/group
+
+
+#Backup /bin/*
+mkdir /someTEMPdirectory/
+sudo cp /bin/* /someTEMPdirectory/
+sudo tar -cf backup.tar /bin/*
+
+#chattr +i the /etc/* & /bin/* directory *** MIGHT BREAK THINGS ***
+root> chattr -R +i /etc/
+root> chattr -R +i /bin/
+
+
+#Check for listening ports & scored ports from threatspace:
+
+netstat -tupln
+
+
+build iptables around scored ports on threatspace:
+
+Save multiple copies of your iptables: 
+
+iptables-save > rules.fw
+
+Make iptables restore on reboot: Create a shell script in:
+/etc/network/if-up.d/      name the script 'iptables' and make it executable:
+sudo chmod +x iptables
+
+inside the script put:
+
+#! /bin/sh
+/sbin/iptables-restore < rules.fw
+
+
+
+#Harden SSH: (See Next Page)
+
+After changing your /etc/ssh/sshd_config, do a md5sum > filename and make a backup copy of /etc/ssh/sshd_config and store it somewhere. 
+
+*** you will have to restart sshd for the changes to take affect:
+sudo /etc/init.d/sshd restart
+or
+service ssh restart    <--or-->    systemctl restart sshd
+
+
+#Harden SQL:
+
+#Harden VSFTPD: (next page)
+
+#Harden Users:
+
+
+
+
+

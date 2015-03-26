@@ -1,0 +1,251 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2015.03.15 23:04:28 =~=~=~=~=~=~=~=~=~=~=~=
+
+
+CISCO SYSTEMS 
+Embedded BIOS Version 1.0(12)13 08/28/08 15:50:37.45
+
+Low Memory: 632 KB
+High Memory: 507 MB
+PCI Device Table.
+Bus Dev Func VendID DevID Class              Irq
+ 00  01  00   1022   2080  Host Bridge        
+ 00  01  02   1022   2082  Chipset En/Decrypt 11
+ 00  0C  00   1148   4320  Ethernet           11
+ 00  0D  00   177D   0003  Network En/Decrypt 10
+ 00  0F  00   1022   2090  ISA Bridge         
+ 00  0F  02   1022   2092  IDE Controller     
+ 00  0F  03   1022   2093  Audio              10
+ 00  0F  04   1022   2094  Serial Bus         9
+ 00  0F  05   1022   2095  Serial Bus         9
+
+Evaluating BIOS Options ...
+Launch BIOS Extension to setup ROMMON
+Cisco Systems ROMMON Version (1.0(12)13) #0: Thu Aug 28 15:55:27 PDT 2008
+
+Platform ASA5505
+Use BREAK or ESC to interrupt boot.Use SPACE to begin boot immediately.Boot in 10 seconds.                                                Boot interrupted.
+
+Ethernet0/0
+MAC Address: ccef.4891.fd61
+Link is DOWN
+
+Use ? for help.
+rommon #0> confreg
+
+Current Configuration Register: 0x00000001
+Configuration Summary: 
+  boot default image from Flash
+
+Do you wish to change this configuration? y/n [n]: n
+
+rommon #1> confreg 0x41
+
+Update Config Register (0x41) in NVRAM...
+
+rommon #2> boot
+Launching BootLoader...
+Default configuration file contains 1 entry.
+
+Searching / for images to boot.
+
+Loading /asa825-k8.bin... Booting...
+Platform ASA5505
+
+Loading...
+Àdosfsck 2.11, 12 Mar 2005, FAT32, LFN
+Starting check/repair pass.
+/csco_config/97/customization/Template
+  Contains a free cluster (7624). Assuming EOF.
+/csco_config/97/customization/Template
+  File size is 25683 bytes, cluster chain length is 0 bytes.
+  Truncating file to 0 bytes.
+/csco_config/97/bookmarks/Template
+  Contains a free cluster (7641). Assuming EOF.
+/csco_config/97/bookmarks/Template
+  File size is 881 bytes, cluster chain length is 0 bytes.
+  Truncating file to 0 bytes.
+Reclaimed 14 unused clusters (28672 bytes) in 2 chains.
+Starting verification pass.
+Performing changes.
+/dev/hda1: 178 files, 30268/62014 clusters
+dosfsck(/dev/hda1) returned 1
+
+Processor memory 383561728, Reserved memory: 62914560 (DSOs: 0 + kernel: 62914560)
+
+Total SSMs found: 0
+
+Total NICs found: 10
+88E6095 rev 2 Gigabit Ethernet @ index 09 MAC: 0000.0003.0002
+88E6095 rev 2 Ethernet @ index 08 MAC: ccef.4891.fd60
+88E6095 rev 2 Ethernet @ index 07 MAC: ccef.4891.fd5f
+88E6095 rev 2 Ethernet @ index 06 MAC: ccef.4891.fd5e
+88E6095 rev 2 Ethernet @ index 05 MAC: ccef.4891.fd5d
+88E6095 rev 2 Ethernet @ index 04 MAC: ccef.4891.fd5c
+88E6095 rev 2 Ethernet @ index 03 MAC: ccef.4891.fd5b
+88E6095 rev 2 Ethernet @ index 02 MAC: ccef.4891.fd5a
+88E6095 rev 2 Ethernet @ index 01 MAC: ccef.4891.fd59
+y88acs06 rev16 Gigabit Ethernet @ index 00 MAC: ccef.4891.fd61
+
+Licensed features for this platform:
+Maximum Physical Interfaces    : 8         
+VLANs                          : 3, DMZ Restricted
+Inside Hosts                   : 50        
+Failover                       : Disabled
+VPN-DES                        : Enabled   
+VPN-3DES-AES                   : Enabled   
+SSL VPN Peers                  : 2         
+Total VPN Peers                : 10        
+Dual ISPs                      : Disabled  
+VLAN Trunk Ports               : 0         
+Shared License                 : Disabled
+AnyConnect for Mobile          : Disabled  
+AnyConnect for Cisco VPN Phone : Disabled  
+AnyConnect Essentials          : Disabled  
+Advanced Endpoint Assessment   : Disabled  
+UC Phone Proxy Sessions        : 2         
+Total UC Proxy Sessions        : 2         
+Botnet Traffic Filter          : Disabled  
+
+This platform has a Base license.
+
+Encryption hardware device : Cisco ASA-5505 on-board accelerator (revision 0x0)
+                             Boot microcode   : CN1000-MC-BOOT-2.00 
+                             SSL/IKE microcode: CNLite-MC-SSLm-PLUS-2.03
+                             IPSec microcode  : CNlite-MC-IPSECm-MAIN-2.05
+
+Cisco Adaptive Security Appliance Software Version 8.2(5) 
+
+  ****************************** Warning *******************************
+  This product contains cryptographic features and is
+  subject to United States and local country laws
+  governing, import, export, transfer, and use.
+  Delivery of Cisco cryptographic products does not
+  imply third-party authority to import, export,
+  distribute, or use encryption. Importers, exporters,
+  distributors and users are responsible for compliance
+  with U.S. and local country laws. By using this
+  product you agree to comply with applicable laws and
+  regulations. If you are unable to comply with U.S.
+  and local laws, return the enclosed items immediately.
+
+  A summary of U.S. laws governing Cisco cryptographic
+  products may be found at:
+  http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+  If you require further assistance please contact us by
+  sending email to export@cisco.com.
+  ******************************* Warning *******************************
+
+Copyright (c) 1996-2011 by Cisco Systems, Inc.
+
+                Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+                Cisco Systems, Inc.
+                170 West Tasman Drive
+                San Jose, California 95134-1706
+
+Ignoring startup configuration as instructed by configuration register.
+Type help or '?' for a list of available commands.
+ciscoasa> 
+ciscoasa> en
+Password: [*** JUST PRESS ENTER THERE IS NO PASSWORD HERE ***]
+ciscoasa# 
+ciscoasa# conf t
+ciscoasa(config)# 
+
+***************************** NOTICE *****************************
+
+Help to improve the ASA platform by enabling anonymous reporting,
+which allows Cisco to securely receive minimal error and health
+information from the device. To learn more about this feature,
+please visit: http://www.cisco.com/go/smartcall
+
+Would you like to enable anonymous error reporting to help improve
+the product? [Y]es, [N]o, [A]sk later: n
+
+In the future, if you would like to enable this feature,
+issue the command "call-home reporting anonymous".
+
+Please remember to save your configuration.
+
+ciscoasa(config)# enable password reallyhardandlongpassword
+ciscoasa(config)# pass
+ciscoasa(config)# passwd anotherreallyhardandlongpassword
+ciscoasa(config)# 
+ciscoasa(config)# config-register 0x01
+ciscoasa(config)# exit
+ciscoasa# show version
+
+Cisco Adaptive Security Appliance Software Version 8.2(5) 
+Device Manager Version 6.4(5)
+
+Compiled on Fri 20-May-11 16:00 by builders
+System image file is "disk0:/asa825-k8.bin"
+Config file at boot was "startup-config"
+
+ciscoasa up 1 min 39 secs
+
+Hardware:   ASA5505, 512 MB RAM, CPU Geode 500 MHz
+Internal ATA Compact Flash, 128MB
+BIOS Flash Firmware Hub @ 0xffe00000, 1024KB
+
+Encryption hardware device : Cisco ASA-5505 on-board accelerator (revision 0x0)
+                             Boot microcode   : CN1000-MC-BOOT-2.00 
+                             SSL/IKE microcode: CNLite-MC-SSLm-PLUS-2.03
+                             IPSec microcode  : CNlite-MC-IPSECm-MAIN-2.05
+
+ 0: Int: Internal-Data0/0    : address is ccef.4891.fd61, irq 11
+ 1: Ext: Ethernet0/0         : address is ccef.4891.fd59, irq 255
+ 2: Ext: Ethernet0/1         : address is ccef.4891.fd5a, irq 255
+ 3: Ext: Ethernet0/2         : address is ccef.4891.fd5b, irq 255
+ 4: Ext: Ethernet0/3         : address is ccef.4891.fd5c, irq 255
+ 5: Ext: Ethernet0/4         : address is ccef.4891.fd5d, irq 255
+ 6: Ext: Ethernet0/5         : address is ccef.4891.fd5e, irq 255
+ 7: Ext: Ethernet0/6         : address is ccef.4891.fd5f, irq 255
+ 8: Ext: Ethernet0/7         : address is ccef.4891.fd60, irq 255
+ 9: Int: Internal-Data0/1    : address is 0000.0003.0002, irq 255
+10: Int: Not used            : irq 255
+11: Int: Not used            : irq 255
+
+Licensed features for this platform:
+Maximum Physical Interfaces    : 8         
+VLANs                          : 3, DMZ Restricted
+Inside Hosts                   : 50        
+Failover                       : Disabled
+VPN-DES                        : Enabled   
+VPN-3DES-AES                   : Enabled   
+SSL VPN Peers                  : 2         
+Total VPN Peers                : 10        
+Dual ISPs                      : Disabled  
+VLAN Trunk Ports               : 0         
+Shared License                 : Disabled
+AnyConnect for Mobile          : Disabled  
+AnyConnect for Cisco VPN Phone : Disabled  
+AnyConnect Essentials          : Disabled  
+Advanced Endpoint Assessment   : Disabled  
+UC Phone Proxy Sessions        : 2         
+Total UC Proxy Sessions        : 2         
+Botnet Traffic Filter          : Disabled  
+
+This platform has a Base license.
+
+Serial Number: JMX154441TQ
+Running Activation Key: 0x7825eb7b 0x48742fca 0x043299e8 0x8d340030 0x84030aa6 
+Configuration register is 0x41 (will be 0x1 at next reload)
+Configuration last modified by enable_15 at 10:22:40.409 UTC Mon Mar 16 2015
+ciscoasa# 
+ciscoasa# copy running-config startup-config
+Source filename [running-config]? 
+Cryptochecksum: 2a86d785 5a9c0930 2e639d69 4329e5e7 
+
+2039 bytes copied in 1.550 secs (2039 bytes/sec)
+ciscoasa# reload
+Proceed with reload? [confirm] 
+ciscoasa# 
