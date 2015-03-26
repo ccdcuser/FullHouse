@@ -1,0 +1,18 @@
+To find a string in the data portion of a frame: (no limited to TCP or UDP)
+
+frame contains "duck"
+
+*** CaSe sEnSiTiVe ***
+
+finds clear text "duck" in the data portion.
+
+
+
+
+
+To find string in TCP:
+
+tcp continas "duck"
+
+
+*** CaSe SeNsItIvE ***
